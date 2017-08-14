@@ -100,8 +100,10 @@ debug.stagefright.omx_default_rank=0
 vendor.vidc.disable.split.mode=1
 
 # Perf
+ro.sys.fw.dex2oat_thread_count=8
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.qti.sys.fw.bservice_enable=true
+ro.vendor.qti.am.reschedule_service=true
 
 # Radio
 persist.radio.multisim.config=dsds
