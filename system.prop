@@ -60,6 +60,9 @@ persist.qfp=false
 # FM
 ro.fm.transmitter=false
 
+# Graphics
+debug.cpurend.vsync=false
+
 # Media
 av.debug.disable.pers.cache=1
 media.aac_51_output_enabled=true
