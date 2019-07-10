@@ -61,6 +61,9 @@ persist.vendor.qcom.bluetooth.enable.splita2dp=false
 ro.bluetooth.hfp.ver=1.7
 ro.vendor.bluetooth.wipower=false
 
+# Boot
+sys.vendor.shutdown.waittime=500
+
 # Camera
 persist.camera.mct.debug=0
 persist.camera.iface.logs=0
