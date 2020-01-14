@@ -261,7 +261,8 @@ PRODUCT_COPY_FILES += \
 # Iorapd
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.iorapd.enable=true \
-    iorapd.perfetto.enable=true
+    iorapd.perfetto.enable=true \
+    iorapd.readahead.enable=true
 
 # IPA Manager
 PRODUCT_PACKAGES += \
