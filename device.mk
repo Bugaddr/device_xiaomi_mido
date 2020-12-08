@@ -331,6 +331,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
