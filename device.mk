@@ -440,3 +440,7 @@ PRODUCT_PACKAGES += \
 # Adb key
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/adbkey.pub:root/adb_keys
+
+# SimpleKeyboard
+PRODUCT_PACKAGES += \
+    SimpleKeyboard
