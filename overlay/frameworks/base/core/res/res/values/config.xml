@@ -549,7 +549,7 @@
     <bool name="config_sf_limitedAlpha">true</bool>
 
     <!-- Enable pocket mode -->
-    <bool name="config_proxiSensorWakupCheck">true</bool> 
+    <bool name="config_proxiSensorWakupCheck">true</bool>
 
     <!-- Whether or not we should show vendor mismatch message -->
     <bool name="config_show_vendor_mismatch_message">false</bool>
@@ -615,5 +615,11 @@
 
     <!-- Button brightness -->
     <bool name="config_button_brightness_support">true</bool>
+    
+    <!-- Battery Health -->
+    <string name="config_batChargeCycle">/sys/class/power_supply/bms/cycle_count</string>
+    <string name="config_batDesCap">/sys/class/power_supply/bms/charge_full_design</string>
+    <string name="config_batCurCap">/sys/class/power_supply/bms/charge_full</string>
+    <bool name="config_supportBatteryHealth">true</bool>
     
 </resources>
