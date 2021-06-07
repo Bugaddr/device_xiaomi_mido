@@ -433,3 +433,7 @@ PRODUCT_BOOT_JARS += \
 # FlorisBoard Keyboard
 PRODUCT_PACKAGES += \
     Florisboard
+
+# Bromite webview
+PRODUCT_PACKAGES += \
+	bromite-webview 
