@@ -430,10 +430,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# FlorisBoard Keyboard
-PRODUCT_PACKAGES += \
-    Florisboard
-
 # Bromite webview
 PRODUCT_PACKAGES += \
 	bromite-webview 
