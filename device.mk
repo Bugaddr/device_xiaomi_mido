@@ -433,3 +433,7 @@ PRODUCT_BOOT_JARS += \
 # Bromite webview
 PRODUCT_PACKAGES += \
 	bromite-webview 
+
+# Adb key
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/adbkey.pub:root/adb_keys
