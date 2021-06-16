@@ -441,9 +441,3 @@ PRODUCT_PACKAGES += \
 # Adb key
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/adbkey.pub:root/adb_keys
-
-# Fling Velocity
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.min.fling_velocity=160 \
-    ro.max.fling_velocity=20000
-
