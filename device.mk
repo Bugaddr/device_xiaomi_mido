@@ -334,10 +334,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -434,6 +430,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
+# Remove unwanted packages
+#PRODUCT_PACKAGES += \
+#    RemovePackages
+
 # Bromite webview
 PRODUCT_PACKAGES += \
 	bromite-webview 
@@ -446,3 +446,4 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.min.fling_velocity=160 \
     ro.max.fling_velocity=20000
+
