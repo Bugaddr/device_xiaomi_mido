@@ -24,8 +24,12 @@ $(call inherit-product, device/xiaomi/mido/device.mk)
 # Inherit some common CorvusOS stuff.
 $(call inherit-product, vendor/corvus/config/common_full_phone.mk)
 
-# Faceunlock
-TARGET_FACE_UNLOCK_SUPPORTED := true
+# Corvus specific stuff
+#USE_GAPPS=true
+#USE_PROTON=true
+RAVEN_LAIR=official
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.corvus.maintainer=chintu
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := mido
