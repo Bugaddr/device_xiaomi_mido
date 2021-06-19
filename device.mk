@@ -330,11 +330,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qmi/qmi_fw.conf:$(TARGET_COPY_OUT_VENDOR)/etc/qmi_fw.conf
 
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
-# Ril
 PRODUCT_PACKAGES += \
     libjson
 
@@ -449,3 +444,7 @@ PRODUCT_COPY_FILES += \
 # SimpleKeyboard
 PRODUCT_PACKAGES += \
     SimpleKeyboard
+
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
