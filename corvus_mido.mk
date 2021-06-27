@@ -26,7 +26,7 @@ $(call inherit-product, vendor/corvus/config/common_full_phone.mk)
 
 # Corvus specific stuff
 #USE_GAPPS=true
-USE_PROTON=true
+#USE_PROTON=true
 RAVEN_LAIR=Official
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.corvus.maintainer=Chintu
