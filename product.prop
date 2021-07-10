@@ -3,7 +3,7 @@
 #
 
 # Default to BFQ I/O scheduler
-persist.sys.io.scheduler=bfq
+#persist.sys.io.scheduler=bfq
 
 # IORap
 ro.iorapd.enable=true
