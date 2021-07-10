@@ -32,7 +32,7 @@
     <bool name="config_smart_replies_in_notifications_requires_targeting_p">false</bool>
 
     <!-- FPSInfoService FPS node file path -->
-    <string name="config_fpsInfoSysNode" translatable="false">/sys/class/graphics/fb0/dynamic_fps</string>
+    <string name="config_fpsInfoSysNode" translatable="false">/sys/devices/virtual/graphics/fb0/measured_fps</string>
 
     <!-- Should we vibrate on an icon animation of the shelf. This should only be active if the
      vibrator is capable of subtle vibrations -->
