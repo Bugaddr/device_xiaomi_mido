@@ -2,6 +2,12 @@
 # vendor.prop for mido
 #
 
+# ADB on boot
+persist.service.adb.enable=0
+persist.service.debuggable=0
+#persist.sys.usb.config=mtp,adb
+ro.adb.secure=1
+
 # Audio
 audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
