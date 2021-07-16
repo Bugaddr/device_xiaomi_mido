@@ -2196,7 +2196,6 @@ case "$target" in
             echo 633600 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
             # cpuset parameters
-            echo 1-2 > /dev/cpuset/audio-app/cpus
             echo 0-1 > /dev/cpuset/background/cpus
             echo 0-7 > /dev/cpuset/camera-daemon/cpus
             echo 0-3,5-6 > /dev/cpuset/foreground/cpus
