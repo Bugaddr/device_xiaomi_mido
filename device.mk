@@ -349,7 +349,9 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.usb.rc \
     init.target.rc \
     init.veth_ipa_config.sh \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.insmod.sh \
+    init.class_main.sh
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
