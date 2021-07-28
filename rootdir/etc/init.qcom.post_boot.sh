@@ -27,7 +27,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-function 8953_sched_dcvs_eas()
+8953_sched_dcvs_eas()
 {
     #governor settings
     echo 1 > /sys/devices/system/cpu/cpu0/online
@@ -40,7 +40,7 @@ function 8953_sched_dcvs_eas()
     echo 85 > /sys/devices/system/cpu/cpufreq/schedutil/hispeed_load
 }
 
-function 8917_sched_dcvs_eas()
+8917_sched_dcvs_eas()
 {
     #governor settings
     echo 1 > /sys/devices/system/cpu/cpu0/online
@@ -53,7 +53,7 @@ function 8917_sched_dcvs_eas()
     echo 85 > /sys/devices/system/cpu/cpufreq/schedutil/hispeed_load
 }
 
-function 8937_sched_dcvs_eas()
+8937_sched_dcvs_eas()
 {
     # enable governor for perf cluster
     echo 1 > /sys/devices/system/cpu/cpu0/online
@@ -76,7 +76,7 @@ function 8937_sched_dcvs_eas()
 
 }
 
-function configure_automotive_sku_parameters() {
+configure_automotive_sku_parameters() {
 
     echo 1036800 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     echo 1056000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
@@ -84,7 +84,7 @@ function configure_automotive_sku_parameters() {
     echo 1785600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
 #read feature id from nvram
-reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
+reg_val="$(cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4)"
 feature_id=$(((reg_val >> 20) & 0xFF))
 log -t BOOT -p i "feature id '$feature_id'"
 if [ $feature_id == 0 ]; then
@@ -102,10 +102,10 @@ else
 fi
 }
 
-function configure_sku_parameters() {
+configure_sku_parameters() {
 
 #read feature id from nvram
-reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
+reg_val="$(cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4)"
 feature_id=$(((reg_val >> 20) & 0xFF))
 log -t BOOT -p i "feature id '$feature_id'"
 if [ $feature_id == 6 ]; then
@@ -131,7 +131,7 @@ if [ $feature_id == 6 ]; then
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1017600000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
 	echo 3 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-	echo {class:ddr, res:capped, val: 1016} > /sys/kernel/debug/aop_send_message
+	echo '{class:ddr, res:capped, val: 1016}' > /sys/kernel/debug/aop_send_message
 	setprop vendor.sku_identified 1
 	setprop vendor.sku_name "SA6145"
 elif [ $feature_id == 5 ]; then
@@ -157,7 +157,7 @@ elif [ $feature_id == 5 ]; then
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
 	echo 2 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-	echo {class:ddr, res:capped, val: 1333} > /sys/kernel/debug/aop_send_message
+	echo '{class:ddr, res:capped, val: 1333}' > /sys/kernel/debug/aop_send_message
 	setprop vendor.sku_identified 1
 	setprop vendor.sku_name "SA6150"
 elif [ $feature_id == 4 ] || [ $feature_id == 3 ]; then
@@ -183,7 +183,7 @@ elif [ $feature_id == 4 ] || [ $feature_id == 3 ]; then
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
 	echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-	echo {class:ddr, res:capped, val: 1555} > /sys/kernel/debug/aop_send_message
+	echo '{class:ddr, res:capped, val: 1555}' > /sys/kernel/debug/aop_send_message
 	setprop vendor.sku_identified 1
 	setprop vendor.sku_name "SA6155"
 else
@@ -209,13 +209,13 @@ else
 	echo 940800000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/min_freq
 	echo 1363200000 > /sys/class/devfreq/soc\:qcom,cpu6-cpu-l3-lat/max_freq
 	echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-	echo {class:ddr, res:capped, val: 1555} > /sys/kernel/debug/aop_send_message
+	echo '{class:ddr, res:capped, val: 1555}' > /sys/kernel/debug/aop_send_message
         setprop vendor.sku_identified 1
 	setprop vendor.sku_name "SA6155"
 fi
 }
 
-function 8953_sched_dcvs_hmp()
+8953_sched_dcvs_hmp()
 {
     #scheduler settings
     echo 3 > /proc/sys/kernel/sched_window_stats_policy
@@ -256,7 +256,7 @@ function 8953_sched_dcvs_hmp()
 
 }
 
-function 8917_sched_dcvs_hmp()
+8917_sched_dcvs_hmp()
 {
     # HMP scheduler settings
     echo 3 > /proc/sys/kernel/sched_window_stats_policy
@@ -297,7 +297,7 @@ function 8917_sched_dcvs_hmp()
     echo 50000 > /proc/sys/kernel/sched_freq_dec_notify
 }
 
-function 8937_sched_dcvs_hmp()
+8937_sched_dcvs_hmp()
 {
     # HMP scheduler settings
     echo 3 > /proc/sys/kernel/sched_window_stats_policy
@@ -364,7 +364,7 @@ function 8937_sched_dcvs_hmp()
 
 }
 
-function sdm660_sched_interactive_dcvs() {
+sdm660_sched_interactive_dcvs() {
 
     echo 0 > /proc/sys/kernel/sched_select_prev_cpu_us
     echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
@@ -471,7 +471,7 @@ function sdm660_sched_interactive_dcvs() {
     echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
 }
 
-function sdm660_sched_schedutil_dcvs() {
+sdm660_sched_schedutil_dcvs() {
 
     # configure governor settings for little cluster
     echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -539,13 +539,13 @@ function sdm660_sched_schedutil_dcvs() {
     done
 }
 
-target=`getprop ro.board.platform`
+target="$(getprop ro.board.platform)"
 
-function configure_zram_parameters() {
-    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+configure_zram_parameters() {
+    MemTotalStr="$(cat /proc/meminfo | grep MemTotal)"
     MemTotal=${MemTotalStr:16:8}
 
-    low_ram=`getprop ro.config.low_ram`
+    low_ram="$(getprop ro.config.low_ram)"
 
     # Zram disk - 75% for Go devices.
     # For 512MB Go device, size = 384MB, set same for Non-Go.
@@ -591,8 +591,8 @@ function configure_zram_parameters() {
     fi
 }
 
-function configure_read_ahead_kb_values() {
-    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+configure_read_ahead_kb_values() {
+    MemTotalStr="$(cat /proc/meminfo | grep MemTotal)"
     MemTotal=${MemTotalStr:16:8}
 
     dmpts=$(ls /sys/block/*/queue/read_ahead_kb | grep -e dm -e mmc)
@@ -614,7 +614,7 @@ function configure_read_ahead_kb_values() {
     fi
 }
 
-function disable_core_ctl() {
+disable_core_ctl() {
     if [ -f /sys/devices/system/cpu/cpu0/core_ctl/enable ]; then
         echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
     else
@@ -622,12 +622,12 @@ function disable_core_ctl() {
     fi
 }
 
-function enable_swap() {
-    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+enable_swap() {
+    MemTotalStr="$(cat /proc/meminfo | grep MemTotal)"
     MemTotal=${MemTotalStr:16:8}
 
     SWAP_ENABLE_THRESHOLD=1048576
-    swap_enable=`getprop ro.vendor.qti.config.swap`
+    swap_enable="$(getprop ro.vendor.qti.config.swap)"
 
     # Enable swap initially only for 1 GB targets
     if [ "$MemTotal" -le "$SWAP_ENABLE_THRESHOLD" ] && [ "$swap_enable" == "true" ]; then
@@ -644,7 +644,7 @@ function enable_swap() {
     fi
 }
 
-function configure_memory_parameters() {
+configure_memory_parameters() {
     # Set Memory parameters.
     #
     # Set per_process_reclaim tuning parameters
@@ -664,8 +664,8 @@ function configure_memory_parameters() {
     # Set allocstall_threshold to 0 for all targets.
     #
 
-ProductName=`getprop ro.product.name`
-low_ram=`getprop ro.config.low_ram`
+ProductName="$(getprop ro.product.name)"
+low_ram="$(getprop ro.config.low_ram)"
 
 if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ]; then
       # Enable ZRAM
@@ -674,7 +674,7 @@ if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$Produc
       echo 0 > /proc/sys/vm/page-cluster
       echo 100 > /proc/sys/vm/swappiness
 else
-    arch_type=`uname -m`
+    arch_type="$(uname -m)"
 
     # Set parameters for 32-bit Go targets.
     if [ "$low_ram" == "true" ]; then
@@ -691,7 +691,7 @@ else
 
         # Read adj series and set adj threshold for PPR and ALMK.
         # This is required since adj values change from framework to framework.
-        adj_series=`cat /sys/module/lowmemorykiller/parameters/adj`
+        adj_series="$(cat /sys/module/lowmemorykiller/parameters/adj)"
         adj_1="${adj_series#*,}"
         set_almk_ppr_adj="${adj_1%%,*}"
 
@@ -706,7 +706,7 @@ else
         # Calculate vmpressure_file_min as below & set for 64 bit:
         # vmpressure_file_min = last_lmk_bin + (last_lmk_bin - last_but_one_lmk_bin)
         if [ "$arch_type" == "aarch64" ]; then
-            minfree_series=`cat /sys/module/lowmemorykiller/parameters/minfree`
+            minfree_series="$(cat /sys/module/lowmemorykiller/parameters/minfree)"
             minfree_1="${minfree_series#*,}" ; rem_minfree_1="${minfree_1%%,*}"
             minfree_2="${minfree_1#*,}" ; rem_minfree_2="${minfree_2%%,*}"
             minfree_3="${minfree_2#*,}" ; rem_minfree_3="${minfree_3%%,*}"
@@ -739,9 +739,9 @@ else
             #bengal_32 has appcompaction enabled. So not needed
             # Set PPR parametersi for other targets
             if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
             else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
             fi
 
             case "$soc_id" in
@@ -781,9 +781,9 @@ else
 fi
 }
 
-function enable_memory_features()
+enable_memory_features()
 {
-    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+    MemTotalStr="$(cat /proc/meminfo | grep MemTotal)"
     MemTotal=${MemTotalStr:16:8}
 
     if [ $MemTotal -le 2097152 ]; then
@@ -971,9 +971,9 @@ case "$target" in
          chmod -h 664 /sys/module/msm_mpdecision/slack_time_max_us
          chmod -h 664 /sys/module/msm_mpdecision/slack_time_min_us
          if [ -f /sys/devices/soc0/soc_id ]; then
-             soc_id=`cat /sys/devices/soc0/soc_id`
+             soc_id="$(cat /sys/devices/soc0/soc_id)"
          else
-             soc_id=`cat /sys/devices/system/soc/soc0/id`
+             soc_id="$(cat /sys/devices/system/soc/soc0/id)"
          fi
          case "$soc_id" in
              "130")
@@ -1041,9 +1041,9 @@ case "$target" in
         echo 1 > /sys/devices/system/cpu/cpu2/online
         echo 1 > /sys/devices/system/cpu/cpu3/online
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
         case "$soc_id" in
             "208" | "211" | "214" | "217" | "209" | "212" | "215" | "218" | "194" | "210" | "213" | "216")
@@ -1107,9 +1107,9 @@ esac
 case "$target" in
     "msm8916")
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
         case "$soc_id" in
             "206")
@@ -1127,16 +1127,16 @@ case "$target" in
             ;;
             "239" | "241" | "263")
                if [ -f /sys/devices/soc0/revision ]; then
-                   revision=`cat /sys/devices/soc0/revision`
+                   revision="$(cat /sys/devices/soc0/revision)"
                else
-                   revision=`cat /sys/devices/system/soc/soc0/revision`
+                   revision="$(cat /sys/devices/system/soc/soc0/revision)"
                fi
                echo 10 > /sys/class/net/rmnet0/queues/rx-0/rps_cpus
                 if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-                    platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+                    platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
                 fi
                 if [ -f /sys/devices/soc0/hw_platform ]; then
-                    hw_platform=`cat /sys/devices/soc0/hw_platform`
+                    hw_platform="$(cat /sys/devices/soc0/hw_platform)"
                 fi
             ;;
             "268" | "269" | "270" | "271")
@@ -1247,9 +1247,9 @@ case "$target" in
     "msm8916")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-           soc_id=`cat /sys/devices/soc0/soc_id`
+           soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-           soc_id=`cat /sys/devices/system/soc/soc0/id`
+           soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         # HMP scheduler settings for 8916, 8936, 8939, 8929
@@ -1342,7 +1342,7 @@ case "$target" in
         case "$soc_id" in
             "239" | "241" | "263" | "268" | "269" | "270" | "271")
 
-            if [ `cat /sys/devices/soc0/revision` != "3.0" ]; then
+            if [ "$(cat /sys/devices/soc0/revision)" != "3.0" ]; then
                 # Apply 1.0 and 2.0 specific Sched & Governor settings
 
                 # HMP scheduler load tracking settings
@@ -1556,9 +1556,9 @@ case "$target" in
     "msm8952")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
         case "$soc_id" in
             "264" | "289")
@@ -1630,12 +1630,12 @@ case "$target" in
                 done
                 for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
                 do
-                    bcl_hotplug_mask=`cat $hotplug_mask`
+                    bcl_hotplug_mask="$(cat $hotplug_mask)"
                     echo 0 > $hotplug_mask
                 done
                 for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
                 do
-                    bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                    bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
                     echo 0 > $hotplug_soc_mask
                 done
                 for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -1730,7 +1730,7 @@ case "$target" in
 
             ;;
             *)
-                panel=`cat /sys/class/graphics/fb0/modes`
+                panel="$(cat /sys/class/graphics/fb0/modes)"
                 if [ "${panel:5:1}" == "x" ]; then
                     panel=${panel:2:3}
                 else
@@ -1786,12 +1786,12 @@ case "$target" in
                 done
                 for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
                 do
-                    bcl_hotplug_mask=`cat $hotplug_mask`
+                    bcl_hotplug_mask="$(cat $hotplug_mask)"
                     echo 0 > $hotplug_mask
                 done
                 for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
                 do
-                    bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                    bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
                     echo 0 > $hotplug_soc_mask
                 done
                 for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -1853,7 +1853,7 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpu7/online
 
                 #Disable CPU retention modes for 32bit builds
-                ProductName=`getprop ro.product.name`
+                ProductName="$(getprop ro.product.name)"
                 if [ "$ProductName" == "msm8952_32" ] || [ "$ProductName" == "msm8952_32_LMT" ]; then
                     echo N > /sys/module/lpm_levels/system/a72/cpu4/retention/idle_enabled
                     echo N > /sys/module/lpm_levels/system/a72/cpu5/retention/idle_enabled
@@ -1861,7 +1861,7 @@ case "$target" in
                     echo N > /sys/module/lpm_levels/system/a72/cpu7/retention/idle_enabled
                 fi
 
-                if [ `cat /sys/devices/soc0/revision` == "1.0" ]; then
+                if [ "$(cat /sys/devices/soc0/revision)" == "1.0" ]; then
                     # Disable l2-pc and l2-gdhs low power modes
                     echo N > /sys/module/lpm_levels/system/a53/a53-l2-gdhs/idle_enabled
                     echo N > /sys/module/lpm_levels/system/a72/a72-l2-gdhs/idle_enabled
@@ -1944,19 +1944,19 @@ case "$target" in
     "msm8953")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-            hw_platform=`cat /sys/devices/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         else
-            hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
         fi
 
         if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-            platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+            platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
         fi
 
         echo 0 > /proc/sys/kernel/sched_boost
@@ -2034,12 +2034,12 @@ case "$target" in
                 done
                 for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
                 do
-                    bcl_hotplug_mask=`cat $hotplug_mask`
+                    bcl_hotplug_mask="$(cat $hotplug_mask)"
                     echo 0 > $hotplug_mask
                 done
                 for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
                 do
-                    bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                    bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
                     echo 0 > $hotplug_soc_mask
                 done
                 for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -2048,7 +2048,7 @@ case "$target" in
                 done
 
                 #if the kernel version >=4.9,use the schedutil governor
-                KernelVersionStr=`cat /proc/sys/kernel/osrelease`
+                KernelVersionStr="$(cat /proc/sys/kernel/osrelease)"
                 KernelVersionS=${KernelVersionStr:2:2}
                 KernelVersionA=${KernelVersionStr:0:1}
                 KernelVersionB=${KernelVersionS%.*}
@@ -2151,12 +2151,12 @@ case "$target" in
                 done
                 for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
                 do
-                    bcl_hotplug_mask=`cat $hotplug_mask`
+                    bcl_hotplug_mask="$(cat $hotplug_mask)"
                     echo 0 > $hotplug_mask
                 done
                 for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
                 do
-                    bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                    bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
                     echo 0 > $hotplug_soc_mask
                 done
                 for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -2266,18 +2266,18 @@ case "$target" in
     "msm8937")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-            hw_platform=`cat /sys/devices/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         else
-            hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
         fi
 	if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-	    platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+	    platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
         fi
 
         # Socid 386 = Pukeena
@@ -2320,7 +2320,7 @@ case "$target" in
                 # disable thermal core_control to update interactive gov settings
                 echo 0 > /sys/module/msm_thermal/core_control/enabled
 
-                KernelVersionStr=`cat /proc/sys/kernel/osrelease`
+                KernelVersionStr="$(cat /proc/sys/kernel/osrelease)"
                 KernelVersionS=${KernelVersionStr:2:2}
                 KernelVersionA=${KernelVersionStr:0:1}
                 KernelVersionB=${KernelVersionS%.*}
@@ -2398,7 +2398,7 @@ case "$target" in
                 # disable thermal core_control to update interactive gov and core_ctl settings
                 echo 0 > /sys/module/msm_thermal/core_control/enabled
 
-                KernelVersionStr=`cat /proc/sys/kernel/osrelease`
+                KernelVersionStr="$(cat /proc/sys/kernel/osrelease)"
                 KernelVersionS=${KernelVersionStr:2:2}
                 KernelVersionA=${KernelVersionStr:0:1}
                 KernelVersionB=${KernelVersionS%.*}
@@ -2610,18 +2610,18 @@ case "$target" in
         echo f > /proc/irq/default_smp_affinity
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-                hw_platform=`cat /sys/devices/soc0/hw_platform`
+                hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         else
-                hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+                hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
         fi
 
-        panel=`cat /sys/class/graphics/fb0/modes`
+        panel="$(cat /sys/class/graphics/fb0/modes)"
         if [ "${panel:5:1}" == "x" ]; then
             panel=${panel:2:3}
         else
@@ -2657,7 +2657,7 @@ case "$target" in
             echo 0-3 > /dev/cpuset/system-background/cpus
 
             #if the kernel version >=4.14,use the schedutil governor
-            KernelVersionStr=`cat /proc/sys/kernel/osrelease`
+            KernelVersionStr="$(cat /proc/sys/kernel/osrelease)"
             KernelVersionS=${KernelVersionStr:2:2}
             KernelVersionA=${KernelVersionStr:0:1}
             KernelVersionB=${KernelVersionS%.*}
@@ -2709,12 +2709,12 @@ case "$target" in
             done
             for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
             do
-                bcl_hotplug_mask=`cat $hotplug_mask`
+                bcl_hotplug_mask="$(cat $hotplug_mask)"
                 echo 0 > $hotplug_mask
             done
             for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
             do
-                bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
                 echo 0 > $hotplug_soc_mask
             done
             for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -2847,15 +2847,15 @@ case "$target" in
         echo 3f > /proc/irq/default_smp_affinity
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-            hw_platform=`cat /sys/devices/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         else
-            hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
         fi
 
         case "$soc_id" in
@@ -2969,9 +2969,9 @@ case "$target" in
     "trinket")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         case "$soc_id" in
@@ -3028,7 +3028,7 @@ case "$target" in
             configure_memory_parameters
 
             # Enable bus-dcvs
-            ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
+            ddr_type="$(od -An -tx /proc/device-tree/memory/ddr_device_type)"
             ddr_type4="07"
             ddr_type3="05"
 
@@ -3101,18 +3101,18 @@ case "$target" in
         echo 3f > /proc/irq/default_smp_affinity
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         case "$soc_id" in
             "355" | "369" | "377" | "380" | "384" )
-      target_type=`getprop ro.hardware.type`
+      target_type="$(getprop ro.hardware.type)"
       if [ "$target_type" == "automotive" ]; then
 	# update frequencies
 	configure_sku_parameters
-	sku_identified=`getprop vendor.sku_identified`
+	sku_identified="$(getprop vendor.sku_identified)"
       else
 	sku_identified=0
       fi
@@ -3388,7 +3388,7 @@ case "$target" in
 
     #Apply settings for lito
     if [ -f /sys/devices/soc0/soc_id ]; then
-        soc_id=`cat /sys/devices/soc0/soc_id`
+        soc_id="$(cat /sys/devices/soc0/soc_id)"
     fi
 
     case "$soc_id" in
@@ -3463,7 +3463,7 @@ case "$target" in
         # Set Memory parameters
         configure_memory_parameters
 
-        rev=`cat /sys/devices/soc0/revision`
+        rev="$(cat /sys/devices/soc0/revision)"
         if [ $rev == "2.0" ] || [ $rev == "2.0.2" ]; then
              # r2.0 related changes
              echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
@@ -3782,9 +3782,9 @@ case "$target" in
     "bengal")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         case "$soc_id" in
@@ -3848,7 +3848,7 @@ case "$target" in
             configure_memory_parameters
 
             # Enable bus-dcvs
-            ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
+            ddr_type="$(od -An -tx /proc/device-tree/memory/ddr_device_type)"
             ddr_type4="07"
             ddr_type3="05"
 
@@ -3935,7 +3935,7 @@ case "$target" in
             configure_memory_parameters
 
             # Enable bus-dcvs
-            ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
+            ddr_type="$(od -An -tx /proc/device-tree/memory/ddr_device_type)"
             ddr_type4="07"
             ddr_type3="05"
 
@@ -4145,19 +4145,19 @@ case "$target" in
         echo 3f > /proc/irq/default_smp_affinity
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-            hw_platform=`cat /sys/devices/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         else
-            hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+            hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
         fi
 
         if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-            platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+            platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
         fi
 
         case "$soc_id" in
@@ -4366,7 +4366,7 @@ case "$target" in
         # disable thermal bcl hotplug to switch governor
         echo 0 > /sys/module/msm_thermal/core_control/enabled
         echo -n disable > /sys/devices/soc.*/qcom,bcl.*/mode
-        bcl_hotplug_mask=`cat /sys/devices/soc.*/qcom,bcl.*/hotplug_mask`
+        bcl_hotplug_mask="$(cat /sys/devices/soc.*/qcom,bcl.*/hotplug_mask)"
         echo 0 > /sys/devices/soc.*/qcom,bcl.*/hotplug_mask
         echo -n enable > /sys/devices/soc.*/qcom,bcl.*/mode
         echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
@@ -4439,12 +4439,12 @@ case "$target" in
         done
         for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
         do
-            bcl_hotplug_mask=`cat $hotplug_mask`
+            bcl_hotplug_mask="$(cat $hotplug_mask)"
             echo 0 > $hotplug_mask
         done
         for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
         do
-            bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+            bcl_soc_hotplug_mask="$(cat $hotplug_soc_mask)"
             echo 0 > $hotplug_soc_mask
         done
         for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -4534,9 +4534,9 @@ case "$target" in
         # disable thermal bcl hotplug to switch governor
         echo 0 > /sys/module/msm_thermal/core_control/enabled
         echo -n disable > /sys/devices/soc/soc:qcom,bcl/mode
-        bcl_hotplug_mask=`cat /sys/devices/soc/soc:qcom,bcl/hotplug_mask`
+        bcl_hotplug_mask="$(cat /sys/devices/soc/soc:qcom,bcl/hotplug_mask)"
         echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_mask
-        bcl_soc_hotplug_mask=`cat /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask`
+        bcl_soc_hotplug_mask="$(cat /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask)"
         echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask
         echo -n enable > /sys/devices/soc/soc:qcom,bcl/mode
         # set sync wakee policy tunable
@@ -4615,7 +4615,7 @@ case "$target" in
         done
         echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
 
-	soc_revision=`cat /sys/devices/soc0/revision`
+	soc_revision="$(cat /sys/devices/soc0/revision)"
 	if [ "$soc_revision" == "2.0" ]; then
 		#Disable suspend for v2.0
 		echo pwr_dbg > /sys/power/wake_lock
@@ -4652,17 +4652,17 @@ case "$target" in
         echo f > /proc/irq/default_smp_affinity
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-                soc_id=`cat /sys/devices/soc0/soc_id`
+                soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-                soc_id=`cat /sys/devices/system/soc/soc0/id`
+                soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         if [ -f /sys/devices/soc0/hw_platform ]; then
-                hw_platform=`cat /sys/devices/soc0/hw_platform`
+                hw_platform="$(cat /sys/devices/soc0/hw_platform)"
         fi
 
         if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-                platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+                platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
         fi
 
 	# Core control parameters
@@ -4950,18 +4950,18 @@ case "$target" in
 	done
 
     if [ -f /sys/devices/soc0/hw_platform ]; then
-        hw_platform=`cat /sys/devices/soc0/hw_platform`
+        hw_platform="$(cat /sys/devices/soc0/hw_platform)"
     else
-        hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+        hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
     fi
 
     if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-        platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+        platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
     fi
 
     echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
     configure_memory_parameters
-    target_type=`getprop ro.hardware.type`
+    target_type="$(getprop ro.hardware.type)"
 	if [ "$target_type" == "automotive" ]; then
            # update frequencies
            configure_automotive_sku_parameters
@@ -5139,17 +5139,17 @@ case "$target" in
 	done
 
     if [ -f /sys/devices/soc0/hw_platform ]; then
-        hw_platform=`cat /sys/devices/soc0/hw_platform`
+        hw_platform="$(cat /sys/devices/soc0/hw_platform)"
     else
-        hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+        hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
     fi
 
     if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-        platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+        platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
     fi
 
 	#Setting the min and max supported frequencies
-	reg_val=`cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4`
+	reg_val="$(cat /sys/devices/platform/soc/780130.qfprom/qfprom0/nvmem | od -An -t d4)"
 	feature_id=$(((reg_val >> 20) & 0xFF))
 
 	#Setting the min supported frequencies
@@ -5168,13 +5168,13 @@ case "$target" in
 
                 #setting max gpu freq to 530 MHz
                 echo 3 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-                echo {class:ddr, res:capped, val: 1804} > /sys/kernel/debug/aop_send_message
+                echo '{class:ddr, res:capped, val: 1804}' > /sys/kernel/debug/aop_send_message
         elif [ $feature_id == 1 ]; then
                 echo "feature_id is 1 for SA8195P"
 
                 #setting max gpu freq to 670 MHz
                 echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-                echo {class:ddr, res:capped, val: 2092} > /sys/kernel/debug/aop_send_message
+                echo '{class:ddr, res:capped, val: 2092}' > /sys/kernel/debug/aop_send_message
         else
                 echo "unknown feature_id value" $feature_id
         fi
@@ -5186,8 +5186,8 @@ esac
 
 case "$target" in
 	"kona")
-	rev=`cat /sys/devices/soc0/revision`
-	ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
+	rev="$(cat /sys/devices/soc0/revision)"
+	ddr_type="$(od -An -tx /proc/device-tree/memory/ddr_device_type)"
 	ddr_type4="07"
 	ddr_type5="08"
 
@@ -5236,7 +5236,7 @@ case "$target" in
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 	echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
 	echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-        if [ $rev == "2.0" ] || [ $rev == "2.1"]; then
+        if [ "$rev" == "2.0" ] || [ "$rev" == "2.1" ]; then
 		echo 1248000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
 	else
 		echo 1228800 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
@@ -5259,7 +5259,7 @@ case "$target" in
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
 	echo 0 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
 	echo 0 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
-        if [ $rev == "2.0" ] || [ $rev == "2.1"]; then
+        if [ "$rev" == "2.0" ] || [ "$rev" == "2.1" ]; then
 		echo 1632000 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
 	else
 		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
@@ -5489,24 +5489,24 @@ case "$target" in
         done
         echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
 	if [ -f /sys/devices/soc0/soc_id ]; then
-		soc_id=`cat /sys/devices/soc0/soc_id`
+		soc_id="$(cat /sys/devices/soc0/soc_id)"
 	else
-		soc_id=`cat /sys/devices/system/soc/soc0/id`
+		soc_id="$(cat /sys/devices/system/soc/soc0/id)"
 	fi
 
 	if [ -f /sys/devices/soc0/hw_platform ]; then
-		hw_platform=`cat /sys/devices/soc0/hw_platform`
+		hw_platform="$(cat /sys/devices/soc0/hw_platform)"
 	else
-		hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+		hw_platform="$(cat /sys/devices/system/soc/soc0/hw_platform)"
 	fi
 
 	if [ -f /sys/devices/soc0/platform_version ]; then
-		platform_version=`cat /sys/devices/soc0/platform_version`
+		platform_version="$(cat /sys/devices/soc0/platform_version)"
 		platform_major_version=$((10#${platform_version}>>16))
 	fi
 
 	if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-		platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+		platform_subtype_id="$(cat /sys/devices/soc0/platform_subtype_id)"
 	fi
 
 	echo N > /sys/module/lpm_levels/system/pwr/cpu0/ret/idle_enabled
@@ -5536,9 +5536,9 @@ case "$target" in
     "msm8909")
 
         if [ -f /sys/devices/soc0/soc_id ]; then
-           soc_id=`cat /sys/devices/soc0/soc_id`
+           soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-           soc_id=`cat /sys/devices/system/soc/soc0/id`
+           soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
 
         # HMP scheduler settings for 8909 similiar to 8917
@@ -5642,7 +5642,7 @@ chown -h system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
 chown -h system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 chown -h system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
 
-emmc_boot=`getprop vendor.boot.emmc`
+emmc_boot="$(getprop vendor.boot.emmc)"
 case "$emmc_boot"
     in "true")
         chown -h system /sys/devices/platform/rs300000a7.65536/force_sync
@@ -5688,9 +5688,9 @@ case "$target" in
     ;;
     "msm7627a")
         if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
+            soc_id="$(cat /sys/devices/soc0/soc_id)"
         else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
+            soc_id="$(cat /sys/devices/system/soc/soc0/id)"
         fi
         case "$soc_id" in
             "127" | "128" | "129")
@@ -5750,13 +5750,13 @@ esac
 # Let kernel know our image version/variant/crm_version
 if [ -f /sys/devices/soc0/select_image ]; then
     image_version="10:"
-    image_version+=`getprop ro.build.id`
+    image_version+="$(getprop ro.build.id)"
     image_version+=":"
-    image_version+=`getprop ro.build.version.incremental`
-    image_variant=`getprop ro.product.name`
+    image_version+="$(getprop ro.build.version.incremental)"
+    image_variant="$(getprop ro.product.name)"
     image_variant+="-"
-    image_variant+=`getprop ro.build.type`
-    oem_version=`getprop ro.build.version.codename`
+    image_variant+="$(getprop ro.build.type)"
+    oem_version="$(getprop ro.build.version.codename)"
     echo 10 > /sys/devices/soc0/select_image
     echo $image_version > /sys/devices/soc0/image_version
     echo $image_variant > /sys/devices/soc0/image_variant
@@ -5764,7 +5764,7 @@ if [ -f /sys/devices/soc0/select_image ]; then
 fi
 
 # Change console log level as per console config property
-console_config=`getprop persist.vendor.console.silent.config`
+console_config="$(getprop persist.vendor.console.silent.config)"
 case "$console_config" in
     "1")
         echo "Enable console config to $console_config"
@@ -5781,13 +5781,13 @@ real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path
 
 # Check panel_model
-panel_model=`cat /sys/class/graphics/fb0/msm_fb_panel_info | grep panel_name`
-default_color = `getprop vendor.display.enable_default_color_mode`
+panel_model="$(cat /sys/class/graphics/fb0/msm_fb_panel_info | grep panel_name)"
+default_color="$(getprop vendor.display.enable_default_color_mode)"
 
 #For tianma panel
 if [ "$panel_model" == "panel_name=nt35596 tianma fhd video mode dsi panel" ]; then
 
-    if ["$default_color" == "1"]; then
+    if [ "$default_color" == "1" ]; then
 	    setprop vendor.display.enable_default_color_mode 0
     fi
 
@@ -5799,7 +5799,7 @@ fi
 #For Boe display
 if [ "$panel_model" == "panel_name=nt35532 fhd video mode dsi panel" ]; then
 
-    if ["$default_color" == "1"]; then
+    if [ "$default_color" == "1" ]; then
             setprop vendor.display.enable_default_color_mode 0
     fi
 
