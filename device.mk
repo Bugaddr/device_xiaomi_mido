@@ -441,9 +441,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# Bromite webview
+# Extra Apks
 PRODUCT_PACKAGES += \
-	bromite-webview 
+    bromite-webview \
+    Bromite \
+    ExactCalculator
 
 # Adb key
 PRODUCT_COPY_FILES += \
