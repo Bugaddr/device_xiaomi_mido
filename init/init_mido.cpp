@@ -127,6 +127,8 @@ void vendor_load_properties()
     set_avoid_gfxaccel_config();
     property_override("ro.boot.verifiedbootstate", "green");
     property_override("ro.boot.flash.locked", "1");
+    property_override("ro.boot.vbmeta.device_state", "locked");
+    property_override("ro.boot.veritymode", "enforcing");
     workaround_snet_properties();
 
     property_override("dalvik.vm.heapstartsize", "8m");
