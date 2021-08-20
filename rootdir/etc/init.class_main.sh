@@ -30,58 +30,60 @@
 #
 # start ril-daemon only for targets on which radio is present
 #
-baseband=`getprop ro.baseband`
-sgltecsfb=`getprop persist.vendor.radio.sglte_csfb`
-datamode=`getprop persist.vendor.data.mode`
-low_ram=`getprop ro.config.low_ram`
+baseband=$(getprop ro.baseband)
+sgltecsfb=$(getprop persist.vendor.radio.sglte_csfb)
+datamode=$(getprop persist.vendor.data.mode)
+low_ram=$(getprop ro.config.low_ram)
 
 case "$baseband" in
-    "apq" | "sda" | "qcs" )
-        setprop ro.vendor.radio.noril yes
-        stop vendor.ril-daemon
+"apq" | "sda" | "qcs")
+    setprop ro.vendor.radio.noril yes
+    stop vendor.ril-daemon
+    ;;
 esac
 
 case "$baseband" in
-    "msm" | "csfb" | "svlte2a" | "mdm" | "mdm2" | "sglte" | "sglte2" | "dsda2" | "unknown" | "dsda3" | "sdm" | "sdx" | "sm6")
+"msm" | "csfb" | "svlte2a" | "mdm" | "mdm2" | "sglte" | "sglte2" | "dsda2" | "unknown" | "dsda3" | "sdm" | "sdx" | "sm6")
 
-        start vendor.ril-daemon
+    start vendor.ril-daemon
 
-        case "$baseband" in
-            "svlte2a" | "csfb")
-                start qmiproxy
-                ;;
-            "sglte" | "sglte2" )
-                if [ "x$sgltecsfb" != "xtrue" ]; then
-                    start qmiproxy
-                else
-                    setprop persist.vendor.radio.voice.modem.index 0
-                fi
-                ;;
-        esac
-
-        multisim=`getprop persist.radio.multisim.config`
-
-        if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
-            start vendor.ril-daemon2
-        elif [ "$multisim" = "tsts" ]; then
-            start vendor.ril-daemon2
-            start vendor.ril-daemon3
+    case "$baseband" in
+    "svlte2a" | "csfb")
+        start qmiproxy
+        ;;
+    "sglte" | "sglte2")
+        if [ "x$sgltecsfb" != "xtrue" ]; then
+            start qmiproxy
+        else
+            setprop persist.vendor.radio.voice.modem.index 0
         fi
+        ;;
+    esac
 
-        case "$datamode" in
-            "tethered")
-                start vendor.dataqti
-                if [ "$low_ram" != "true" ]; then
-                    start vendor.dataadpl
-                fi
-                ;;
-            "concurrent")
-                start vendor.dataqti
-                if [ "$low_ram" != "true" ]; then
-                    start vendor.dataadpl
-                fi
-                ;;
-            *)
-                ;;
-        esac
+    multisim=$(getprop persist.radio.multisim.config)
+
+    if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
+        start vendor.ril-daemon2
+    elif [ "$multisim" = "tsts" ]; then
+        start vendor.ril-daemon2
+        start vendor.ril-daemon3
+    fi
+
+    case "$datamode" in
+    "tethered")
+        start vendor.dataqti
+        if [ "$low_ram" != "true" ]; then
+            start vendor.dataadpl
+        fi
+        ;;
+    "concurrent")
+        start vendor.dataqti
+        if [ "$low_ram" != "true" ]; then
+            start vendor.dataadpl
+        fi
+        ;;
+    *) ;;
+
+    esac
+    ;;
 esac

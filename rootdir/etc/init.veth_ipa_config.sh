@@ -28,13 +28,13 @@
 #IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 echo "Executing veth ipa config"
-echo 33554432 > /proc/sys/net/core/rmem_default
-echo 33554432 > /proc/sys/net/core/rmem_max
-echo 33554432 > /proc/sys/net/core/wmem_default
-echo 33554432 > /proc/sys/net/core/wmem_max
-echo 65535 > /proc/sys/net/core/somaxconn
-echo 65536 > /proc/sys/net/core/netdev_max_backlog
-echo 25165824 > /proc/sys/net/core/optmem_max
-echo 786432 1048576 26777216 > /proc/sys/net/ipv4/tcp_mem
-echo 786432 1048576 26777216 > /proc/sys/net/ipv4/udp_mem
-echo 16384 87380 32554432 > /proc/sys/net/ipv4/tcp_rmem
+echo 33554432 >/proc/sys/net/core/rmem_default
+echo 33554432 >/proc/sys/net/core/rmem_max
+echo 33554432 >/proc/sys/net/core/wmem_default
+echo 33554432 >/proc/sys/net/core/wmem_max
+echo 65535 >/proc/sys/net/core/somaxconn
+echo 65536 >/proc/sys/net/core/netdev_max_backlog
+echo 25165824 >/proc/sys/net/core/optmem_max
+echo 786432 1048576 26777216 >/proc/sys/net/ipv4/tcp_mem
+echo 786432 1048576 26777216 >/proc/sys/net/ipv4/udp_mem
+echo 16384 87380 32554432 >/proc/sys/net/ipv4/tcp_rmem
