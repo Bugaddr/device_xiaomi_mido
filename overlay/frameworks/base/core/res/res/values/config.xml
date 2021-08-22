@@ -663,4 +663,6 @@
     <!-- True if the device supports system navigation keys. -->
     <bool name="config_supportSystemNavigationKeys">true</bool>
 
+    <!-- The max scale for the wallpaper when it's zoomed in -->
+    <item name="config_wallpaperMaxScale" format="float" type="dimen">1</item>
 </resources>
