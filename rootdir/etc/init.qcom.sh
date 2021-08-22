@@ -40,7 +40,7 @@ else
 fi
 
 cur_version_info=$(cat /vendor/firmware_mnt/verinfo/ver_info.txt)
-if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt ]  "$prev_version_info" != "$cur_version_info" ]; then
+if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt ] "$prev_version_info" != "$cur_version_info" ]; then
     # add W for group recursively before delete
     chmod g+w -R /data/vendor/modem_config/*
     rm -rf /data/vendor/modem_config/*
