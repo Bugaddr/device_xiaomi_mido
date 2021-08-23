@@ -668,4 +668,8 @@
 
     <!-- True if the device supports Sustained Performance Mode -->
     <bool name="config_sustainedPerformanceModeSupported">true</bool>
+
+     <!-- Allow the gesture to double tap the power button twice to start the camera while the device
+     is non-interactive. -->
+    <bool name="config_cameraDoubleTapPowerGestureEnabled">false</bool>
 </resources>
