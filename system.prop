@@ -60,10 +60,6 @@ persist.qfp=false
 # FM
 ro.fm.transmitter=false
 
-# LMKD
-ro.config.low_ram=false
-ro.lmk.log_stats=false
-
 # Graphics
 debug.cpurend.vsync=false
 
