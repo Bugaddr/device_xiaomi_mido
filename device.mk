@@ -164,10 +164,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+USE_DEX2OAT_DEBUG := false
+WITH_DEXPREOPT_DEBUG_INFO := false
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl:64 \
     android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.allocator@3.0-impl \
+    android.hardware.graphics.allocator@4.0-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
@@ -182,10 +193,6 @@ PRODUCT_PACKAGES += \
     libvulkan \
     vendor.display.config@1.0.vendor \
     vendor.display.config@2.0
-
-# Device-specific settings
-#PRODUCT_PACKAGES += \
-#    XiaomiParts
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -395,8 +402,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl:64 \
     android.hardware.thermal@1.0-service \
-    android.hardware.graphics.allocator@3.0-impl \
-    android.hardware.graphics.allocator@4.0-impl
+    thermal.msm8953
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -445,30 +451,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# Extra Apks
+# Extra Custom Stuff's
 PRODUCT_PACKAGES += \
     bromite-webview \
     Bromite \
-    ExactCalculator
+    ExactCalculator \
+    SimpleKeyboard \
+    RemovePackages
 
 # Adb key
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/adbkey.pub:root/adb_keys
-
-# SimpleKeyboard
-PRODUCT_PACKAGES += \
-    SimpleKeyboard
-
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-    
-# Speed profile services and wifi-service to reduce RAM and storage
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
-PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
-USE_DEX2OAT_DEBUG := false
-PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
-PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-WITH_DEXPREOPT_DEBUG_INFO := false
