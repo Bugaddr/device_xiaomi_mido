@@ -4,6 +4,3 @@
 
 # Default to BFQ I/O scheduler
 #persist.sys.io.scheduler=bfq
-
-#Dex2oat64
-dalvik.vm.dex2oat64.enabled=true
