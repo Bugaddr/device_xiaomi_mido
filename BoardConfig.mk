@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 
+BUILD_BROKEN_DUP_RULES := true
 DEVICE_PATH := device/xiaomi/mido
 
 # Architecture
