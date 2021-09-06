@@ -17,7 +17,7 @@
 BUILD_BROKEN_DUP_RULES := true
 DEVICE_PATH := device/xiaomi/mido
 
-# Architecture
+# Architecture 1
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -25,6 +25,7 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a53
 
+# Architecture 2
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
@@ -32,8 +33,8 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
+# Board Info
 TARGET_BOARD_PLATFORM := msm8953
-
 TARGET_BOARD_SUFFIX := _64
 
 # Device Properties
@@ -54,6 +55,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/mido
 TARGET_KERNEL_VERSION := 4.9
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
