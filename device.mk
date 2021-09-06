@@ -23,7 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-custom
 
 # PREBUILT KERNEL
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/xiaomi/mido/prebuilt/Image.gz-dtb
+    LOCAL_KERNEL := device/xiaomi/mido/Image.gz-dtb
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
