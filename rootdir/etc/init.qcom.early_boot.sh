@@ -32,13 +32,13 @@ export PATH=/vendor/bin
 boot_reason=$(cat /proc/sys/kernel/boot_reason)
 reboot_reason=$(getprop ro.boot.alarmboot)
 if [ "$boot_reason" = "3" ] || [ "$reboot_reason" = "true" ]; then
-    setprop ro.vendor.alarm_boot true
+	setprop ro.vendor.alarm_boot true
 else
-    setprop ro.vendor.alarm_boot false
+	setprop ro.vendor.alarm_boot false
 fi
 
 # copy GPU frequencies to vendor property
 if [ -f /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies ]; then
-    gpu_freq=$(cat /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies) 2>/dev/null
-    setprop vendor.gpu.available_frequencies "$gpu_freq"
+	gpu_freq=$(cat /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies) 2>/dev/null
+	setprop vendor.gpu.available_frequencies "$gpu_freq"
 fi
