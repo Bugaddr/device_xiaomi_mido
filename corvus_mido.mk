@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017-2021 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ $(call inherit-product, vendor/corvus/config/common_full_phone.mk)
 # Corvus specific stuff
 #USE_GAPPS=true
 #USE_PROTON=true
+USE_DEXOPT=true
 RAVEN_LAIR=Official
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.corvus.maintainer=Chintu
