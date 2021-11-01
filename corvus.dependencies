@@ -14,26 +14,26 @@
 	{
 		"remote": "github",
 		"repository": "Jrchintu/vendor_xiaomi_mido",
-		"target_path": "vendor/xiaomi",
-		"branch": "12"
+		"target_path": "vendor/xiaomi/mido",
+		"branch": "11"
 	},
 	{
 		"remote": "github",
 		"repository": "Jrchintu/hardware_qcom_audio",
 		"target_path": "hardware/qcom-caf/msm8996/audio",
-		"branch": "12"
+		"branch": "11"
 	},
 	{
 		"remote": "github",
 		"repository": "Jrchintu/hardware_qcom_display",
 		"target_path": "hardware/qcom-caf/msm8996/display",
-		"branch": "12"
+		"branch": "11"
 	},
 	{
 		"remote": "github",
 		"repository": "Jrchintu/hardware_qcom_media",
 		"target_path": "hardware/qcom-caf/msm8996/media",
-		"branch": "12"
+		"branch": "11"
 	},
 	{
 		"remote": "github",
